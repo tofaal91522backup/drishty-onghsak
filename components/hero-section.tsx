@@ -138,7 +138,7 @@ export function HeroSection() {
                     width="100%"
                     height="100%"
                     modelXOffset={0}
-                    modelYOffset={-0.5}
+                    modelYOffset={0}
                     autoFrame
                     enableMouseParallax
                     enableHoverRotation
