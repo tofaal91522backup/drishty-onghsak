@@ -38,7 +38,7 @@ export function Footer() {
   return (
     <footer className="bg-navy text-cream" role="contentinfo">
       {/* Main Footer Content */}
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
+      <div className="mx-auto container px-6 py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-6 lg:gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-2">
@@ -160,7 +160,7 @@ export function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-cream/10">
-        <div className="mx-auto max-w-7xl px-6 py-8">
+        <div className="mx-auto container px-6 py-8">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
             {/* Copyright */}
             <p className="text-lg text-cream/60">

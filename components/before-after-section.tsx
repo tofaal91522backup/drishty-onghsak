@@ -21,125 +21,122 @@ const afterPoints = [
 
 export function BeforeAfterSection() {
   return (
-    <section className="py-24 lg:py-32 bg-cream">
-      <div className="mx-auto max-w-7xl px-6">
-        {/* Section Header */}
+    <section className="py-24 lg:py-32 bg-white">
+      <div className="mx-auto container px-6">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-20 text-center"
         >
-          <span className="inline-block rounded-full bg-navy/10 px-4 py-2 text-sm font-semibold text-navy">
+          <span className="inline-block rounded-full bg-[#0F2137]/10 px-4 py-2 text-sm font-semibold text-[#0F2137]">
             The Transformation
           </span>
-          <h2 className="mt-6 font-serif text-4xl font-bold text-navy md:text-5xl">
-            Life <span className="italic text-amber">Before</span> &{" "}
-            <span className="italic text-teal">After</span> Abhash
+
+          <h2 className="mt-6 font-serif text-4xl font-bold tracking-[-0.02em] text-[#0F2137] md:text-5xl">
+            Life{" "}
+            <span className="italic text-[#E07A5F]">Before</span> &{" "}
+            <span className="italic text-[#2A9D8F]">After</span> Abhash
           </h2>
         </motion.div>
 
-        {/* Comparison Grid */}
+        {/* Grid */}
         <div className="relative grid gap-8 lg:grid-cols-2 lg:gap-0">
-          {/* Before Card */}
+
+          {/* BEFORE */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative rounded-3xl bg-gradient-to-br from-coral/20 via-coral/5 to-transparent p-8 lg:rounded-r-none lg:pr-16"
+            transition={{ duration: 0.6 }}
+            className="relative rounded-3xl border border-[#0F2137]/8 bg-white/60 p-8 backdrop-blur-md lg:rounded-r-none lg:pr-16"
           >
-            <div className="mb-8">
-              <span className="inline-flex items-center gap-2 rounded-full bg-coral/20 px-4 py-2 text-sm font-semibold text-coral">
+            {/* subtle bg */}
+            <div className="absolute inset-0 rounded-3xl bg-[radial-gradient(circle_at_top_left,rgba(224,122,95,0.12),transparent_35%)]" />
+
+            <div className="relative mb-8">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#E07A5F]/15 px-4 py-2 text-sm font-semibold text-[#E07A5F]">
                 <X className="h-4 w-4" />
                 Before Abhash
               </span>
             </div>
-            
-            <ul className="space-y-5">
+
+            <ul className="relative space-y-5">
               {beforePoints.map((point, index) => (
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                  transition={{ duration: 0.4, delay: 0.2 + index * 0.08 }}
                   className="flex items-start gap-4"
                 >
-                  <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-coral/20">
-                    <X className="h-3.5 w-3.5 text-coral" />
+                  <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#E07A5F]/20">
+                    <X className="h-3.5 w-3.5 text-[#E07A5F]" />
                   </span>
-                  <span className="text-lg text-navy/80">{point}</span>
+                  <span className="text-lg text-[#3E4A5A]">{point}</span>
                 </motion.li>
               ))}
             </ul>
-
-            {/* Decorative gradient */}
-            <div className="absolute -bottom-4 -right-4 h-32 w-32 rounded-full bg-coral/10 blur-3xl" />
           </motion.div>
 
-          {/* Center Arrow Divider */}
+          {/* CENTER ARROW */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
+            initial={{ opacity: 0, scale: 0.6 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.5 }}
             className="absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 lg:flex"
           >
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-navy shadow-xl">
-              <ArrowRight className="h-7 w-7 text-cream" />
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#0F2137] shadow-[0_10px_30px_rgba(15,33,55,0.25)]">
+              <ArrowRight className="h-7 w-7 text-[#FAF6F0]" />
             </div>
           </motion.div>
 
-          {/* Mobile Arrow */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex justify-center lg:hidden"
-          >
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-navy shadow-lg">
-              <ArrowRight className="h-5 w-5 rotate-90 text-cream" />
+          {/* MOBILE ARROW */}
+          <div className="flex justify-center lg:hidden">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0F2137] shadow-lg">
+              <ArrowRight className="h-5 w-5 rotate-90 text-[#FAF6F0]" />
             </div>
-          </motion.div>
+          </div>
 
-          {/* After Card */}
+          {/* AFTER */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative rounded-3xl bg-gradient-to-bl from-teal/20 via-teal/5 to-transparent p-8 lg:rounded-l-none lg:pl-16"
+            transition={{ duration: 0.6 }}
+            className="relative rounded-3xl border border-[#0F2137]/8 bg-white/60 p-8 backdrop-blur-md lg:rounded-l-none lg:pl-16"
           >
-            <div className="mb-8">
-              <span className="inline-flex items-center gap-2 rounded-full bg-teal/20 px-4 py-2 text-sm font-semibold text-teal">
+            {/* subtle bg */}
+            <div className="absolute inset-0 rounded-3xl bg-[radial-gradient(circle_at_bottom_right,rgba(42,157,143,0.12),transparent_35%)]" />
+
+            <div className="relative mb-8">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#2A9D8F]/15 px-4 py-2 text-sm font-semibold text-[#2A9D8F]">
                 <Check className="h-4 w-4" />
                 After Abhash
               </span>
             </div>
-            
-            <ul className="space-y-5">
+
+            <ul className="relative space-y-5">
               {afterPoints.map((point, index) => (
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                  transition={{ duration: 0.4, delay: 0.2 + index * 0.08 }}
                   className="flex items-start gap-4"
                 >
-                  <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal/20">
-                    <Check className="h-3.5 w-3.5 text-teal" />
+                  <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#2A9D8F]/20">
+                    <Check className="h-3.5 w-3.5 text-[#2A9D8F]" />
                   </span>
-                  <span className="text-lg text-navy/80">{point}</span>
+                  <span className="text-lg text-[#3E4A5A]">{point}</span>
                 </motion.li>
               ))}
             </ul>
-
-            {/* Decorative gradient */}
-            <div className="absolute -bottom-4 -left-4 h-32 w-32 rounded-full bg-teal/10 blur-3xl" />
           </motion.div>
         </div>
       </div>

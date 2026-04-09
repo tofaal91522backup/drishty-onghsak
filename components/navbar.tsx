@@ -17,13 +17,13 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="sticky top-0 left-0 right-0 z-50">
       <nav
-        className="mx-4 mt-4 rounded-2xl border border-cream-300/50 bg-cream/70 backdrop-blur-md shadow-lg"
+        className=" border border-cream-300/50 bg-cream/70 backdrop-blur-md "
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="mx-auto max-w-7xl px-6 py-4">
+        <div className="mx-auto container px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link
@@ -54,12 +54,12 @@ export function Navbar() {
 
             {/* CTA Button - Desktop */}
             <div className="hidden lg:block">
-              <Link
+              <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-full bg-navy px-6 py-3 text-lg font-semibold text-cream transition-all hover:bg-navy-700 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2"
+                className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-[#cfac6e] px-6 py-3 text-base font-semibold text-[#FAF6F0] shadow-[0_12px_30px_rgba(15,33,55,0.18)] transition-all duration-300 hover:-translate-y-0.5 t focus:outline-none"
               >
                 Get Started
-              </Link>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}

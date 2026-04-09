@@ -103,7 +103,7 @@ function ProgressBar({
 export function ImpactDeepDiveSection() {
   return (
     <section className="py-24 lg:py-32 bg-white">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto container px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -1,15 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { ArrowRight, Check } from "lucide-react";
+import { BackgroundGradient } from "@/components/ui/background-gradient";
 
 const products = [
   {
     name: "Abhash Smart Cane",
+    eyebrow: "Flagship Mobility Device",
     description:
       "Our flagship smart cane with advanced obstacle detection and haptic feedback, designed for intuitive navigation in any environment.",
-    gradient: "from-amber/30 via-amber/10 to-cream",
-    accentColor: "amber",
-    tags: ["Ultrasonic Sensing", "Haptic Feedback", "Long Battery Life", "Lightweight"],
+    accent: "#E8A838",
+    image: "https://irisvision.com/wp-content/uploads/2024/09/3.webp",
+    tags: [
+      "Ultrasonic Sensing",
+      "Haptic Feedback",
+      "Long Battery Life",
+      "Lightweight",
+    ],
     features: [
       "3-meter obstacle detection range",
       "Vibration alerts for different obstacles",
@@ -19,11 +28,17 @@ const products = [
   },
   {
     name: "AI Wearable Companion",
+    eyebrow: "Intelligent Guidance System",
     description:
       "A wearable device with AI-powered scene description and GPS navigation, providing real-time audio guidance for complete independence.",
-    gradient: "from-teal/30 via-teal/10 to-cream",
-    accentColor: "teal",
-    tags: ["GPS Navigation", "AI Scene Description", "Voice Assistant", "Emergency SOS"],
+    accent: "#2A9D8F",
+    image: "https://www.shutterstock.com/image-vector/blind-woman-holding-stick-mobile-600nw-1661441773.jpg",
+    tags: [
+      "GPS Navigation",
+      "AI Scene Description",
+      "Voice Assistant",
+      "Emergency SOS",
+    ],
     features: [
       "Real-time environment description",
       "Turn-by-turn voice navigation",
@@ -35,185 +50,152 @@ const products = [
 
 export function ProductsSection() {
   return (
-    <section id="products" className="py-24 lg:py-32 bg-cream">
-      <div className="mx-auto max-w-7xl px-6">
-        {/* Section Header */}
+    <section id="products" className="relative overflow-hidden bg-[#FAF6F0] py-24 lg:py-32">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(232,168,56,0.10),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(42,157,143,0.08),transparent_32%)]" />
+      </div>
+
+      <div className="relative mx-auto container px-6">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mx-auto mb-20 max-w-3xl text-center"
         >
-          <span className="inline-block rounded-full bg-navy/10 px-4 py-2 text-sm font-semibold text-navy">
+          <span className="inline-block rounded-full bg-[#0F2137]/10 px-4 py-2 text-sm font-semibold text-[#0F2137]">
             Our Solutions
           </span>
-          <h2 className="mt-6 font-serif text-4xl font-bold text-navy md:text-5xl">
-            Products Built for <span className="italic text-amber">Independence</span>
+
+          <h2 className="mt-6 font-serif text-4xl font-bold tracking-[-0.02em] text-[#0F2137] md:text-5xl">
+            Products Built for{" "}
+            <span className="italic text-[#E8A838]">Independence</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-navy/70">
-            Innovative assistive technology designed with input from the visually impaired community.
+
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#3E4A5A]">
+            Innovative assistive technology thoughtfully designed for safer,
+            smarter, and more confident everyday movement.
           </p>
         </motion.div>
 
-        {/* Products Grid */}
+        {/* Cards */}
         <div className="grid gap-8 lg:grid-cols-2">
           {products.map((product, index) => (
             <motion.div
               key={product.name}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 35 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="group relative overflow-hidden rounded-3xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.6, delay: index * 0.12 }}
             >
-              {/* Product Image Placeholder */}
-              <div className={`relative h-72 bg-gradient-to-br ${product.gradient} overflow-hidden`}>
-                {/* Decorative Elements */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Device Silhouette */}
-                  <div className="relative">
-                    {/* Glow Effect */}
-                    <div
-                      className={`absolute -inset-8 rounded-full ${
-                        product.accentColor === "amber" ? "bg-amber/20" : "bg-teal/20"
-                      } blur-2xl`}
+              <BackgroundGradient
+                className="h-full rounded-[28px] bg-white p-[1px]"
+                containerClassName="h-full"
+              >
+                <article className="group relative h-full overflow-hidden rounded-[27px] bg-white">
+                  {/* top accent glow */}
+                  <div
+                    className="pointer-events-none absolute -left-16 -top-16 h-40 w-40 rounded-full blur-3xl"
+                    style={{ background: `${product.accent}20` }}
+                  />
+                  <div
+                    className="pointer-events-none absolute -bottom-16 -right-16 h-40 w-40 rounded-full blur-3xl"
+                    style={{ background: `${product.accent}16` }}
+                  />
+
+                  {/* image */}
+                  <div className="relative h-[280px] overflow-hidden sm:h-[320px]">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    
-                    {/* Device Shape */}
-                    {index === 0 ? (
-                      // Smart Cane Representation
-                      <div className="relative z-10 flex flex-col items-center">
-                        <div
-                          className={`h-40 w-4 rounded-full ${
-                            product.accentColor === "amber" ? "bg-amber" : "bg-teal"
-                          } shadow-lg`}
-                        />
-                        <div
-                          className={`mt-2 h-8 w-8 rounded-full ${
-                            product.accentColor === "amber" ? "bg-amber-600" : "bg-teal-600"
-                          } shadow-lg`}
-                        />
-                        {/* Sensor Waves */}
-                        <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                          {[1, 2, 3].map((i) => (
-                            <motion.div
-                              key={i}
-                              className={`absolute left-1/2 h-12 w-12 -translate-x-1/2 rounded-full border-2 ${
-                                product.accentColor === "amber"
-                                  ? "border-amber/40"
-                                  : "border-teal/40"
-                              }`}
-                              style={{
-                                width: `${i * 30 + 20}px`,
-                                height: `${i * 30 + 20}px`,
-                              }}
-                              animate={{
-                                opacity: [0.6, 0.2, 0.6],
-                                scale: [1, 1.1, 1],
-                              }}
-                              transition={{
-                                duration: 2,
-                                delay: i * 0.3,
-                                repeat: Infinity,
-                              }}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    ) : (
-                      // Wearable Representation
-                      <div className="relative z-10 flex flex-col items-center">
-                        <div
-                          className={`h-24 w-24 rounded-2xl ${
-                            product.accentColor === "amber" ? "bg-amber" : "bg-teal"
-                          } shadow-lg`}
-                        >
-                          {/* Screen */}
-                          <div className="m-2 h-20 w-20 rounded-xl bg-navy/20" />
-                        </div>
-                        {/* Band */}
-                        <div
-                          className={`-mt-2 h-8 w-32 rounded-full ${
-                            product.accentColor === "amber" ? "bg-amber-600" : "bg-teal-600"
-                          }`}
-                        />
-                        {/* Signal Waves */}
-                        {[1, 2, 3].map((i) => (
-                          <motion.div
-                            key={i}
-                            className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 ${
-                              product.accentColor === "amber"
-                                ? "border-amber/30"
-                                : "border-teal/30"
-                            }`}
-                            style={{
-                              width: `${i * 50 + 80}px`,
-                              height: `${i * 50 + 80}px`,
-                            }}
-                            animate={{
-                              opacity: [0.4, 0.1, 0.4],
-                              scale: [1, 1.05, 1],
-                            }}
-                            transition={{
-                              duration: 2.5,
-                              delay: i * 0.4,
-                              repeat: Infinity,
-                            }}
-                          />
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F2137]/50 via-[#0F2137]/10 to-transparent" />
 
-                {/* Decorative Corner Gradient */}
-                <div
-                  className={`absolute -bottom-20 -right-20 h-40 w-40 rounded-full ${
-                    product.accentColor === "amber" ? "bg-amber/30" : "bg-teal/30"
-                  } blur-3xl`}
-                />
-              </div>
-
-              {/* Product Info */}
-              <div className="p-8">
-                <h3 className="font-serif text-2xl font-bold text-navy md:text-3xl">
-                  {product.name}
-                </h3>
-                <p className="mt-4 text-lg leading-relaxed text-navy/70">
-                  {product.description}
-                </p>
-
-                {/* Feature Tags */}
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {product.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className={`rounded-full px-3 py-1.5 text-sm font-medium ${
-                        product.accentColor === "amber"
-                          ? "bg-amber/10 text-amber-700"
-                          : "bg-teal/10 text-teal-700"
-                      }`}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Feature List */}
-                <ul className="mt-6 space-y-2">
-                  {product.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-3 text-navy/70">
+                    <div className="absolute left-6 top-6">
                       <span
-                        className={`h-1.5 w-1.5 rounded-full ${
-                          product.accentColor === "amber" ? "bg-amber" : "bg-teal"
-                        }`}
-                      />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                        className="inline-flex rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em]"
+                        style={{
+                          background: `${product.accent}20`,
+                          color: product.accent,
+                          border: `1px solid ${product.accent}30`,
+                        }}
+                      >
+                        {product.eyebrow}
+                      </span>
+                    </div>
+
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <h3 className="font-serif text-3xl font-bold tracking-[-0.02em] text-white md:text-4xl">
+                        {product.name}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* content */}
+                  <div className="p-6 sm:p-8">
+                    <p className="text-lg leading-relaxed text-[#3E4A5A]">
+                      {product.description}
+                    </p>
+
+                    {/* tags */}
+                    <div className="mt-6 flex flex-wrap gap-2.5">
+                      {product.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full px-3.5 py-1.5 text-sm font-medium"
+                          style={{
+                            background: `${product.accent}12`,
+                            color: product.accent,
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* features */}
+                    <div className="mt-8 grid gap-3">
+                      {product.features.map((feature) => (
+                        <div
+                          key={feature}
+                          className="flex items-start gap-3 rounded-2xl border border-[#0F2137]/8 bg-[#FFFCF8] px-4 py-4"
+                        >
+                          <span
+                            className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full"
+                            style={{ background: `${product.accent}16` }}
+                          >
+                            <Check
+                              className="h-3.5 w-3.5"
+                              style={{ color: product.accent }}
+                            />
+                          </span>
+                          <span className="text-sm leading-6 text-[#3E4A5A]">
+                            {feature}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* footer */}
+                    <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+                      <a
+                        href="#contact"
+                        className="inline-flex items-center gap-2 rounded-full bg-[#0F2137] px-6 py-3 text-sm font-semibold text-[#FAF6F0] transition-all duration-300 hover:bg-[#0B1A2E]"
+                      >
+                        Learn More
+                        <ArrowRight className="h-4 w-4" />
+                      </a>
+
+                      <span className="text-sm text-[#6B7280]">
+                        Designed for safer daily independence
+                      </span>
+                    </div>
+                  </div>
+                </article>
+              </BackgroundGradient>
             </motion.div>
           ))}
         </div>
