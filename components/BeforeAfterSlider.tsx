@@ -25,12 +25,12 @@ const BeforeAfterSlider = () => {
       {/* Card */}
       <div className="rounded-[32px] border border-[#0F2137]/10 bg-white shadow-[0_20px_60px_rgba(15,33,55,0.06)] overflow-hidden">
         {/* 🔥 IMAGE SLIDER */}
-        <div className="h-[70vh] w-full">
+        <div className="h-[90vh] w-full relative">
           <Compare
-            firstImage="/images/before3.png"
+            firstImage="/images/before.png"
             secondImage="/images/after.png"
-            firstImageClassName="object-cover object-left-top w-full"
-            secondImageClassname="object-cover object-left-top w-full"
+            firstImageClassName="object-cover object-top w-full"
+            secondImageClassname="object-cover object-top w-full"
             className="h-full w-full"
             slideMode="hover"
             autoplay={true}

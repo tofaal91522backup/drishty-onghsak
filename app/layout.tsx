@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 
 import "./globals.css";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 // Sans font (main UI font)
 const poppins = Poppins({
@@ -56,6 +58,8 @@ export default function RootLayout({
     <html lang="en" className={`${poppins.variable}`}>
       <body className=" antialiased bg-cream text-navy">
         {children}
+        <NextTopLoader showSpinner={false} color="#ed8c2f" />
+        <ScrollToTop />
       </body>
     </html>
   );
