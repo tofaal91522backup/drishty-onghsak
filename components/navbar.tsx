@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Eye } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
   { href: "#features", label: "Features" },
@@ -15,28 +16,40 @@ const navLinks = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 left-0 right-0 z-50">
+    <header className="fixed top-0 left-0 right-0 z-50">
       <nav
-        className=" border border-cream-300/50 bg-cream/70 backdrop-blur-md "
+        className={`transition-all duration-300 border-b ${
+          scrolled
+            ? "bg-[#141414]/80 backdrop-blur-md border-white/10 py-3"
+            : "bg-transparent border-transparent py-5"
+        }`}
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="mx-auto container px-6 py-4">
+        <div className="mx-auto container px-6 md:px-12">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center gap-2 text-navy transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 rounded-lg"
+              className="flex items-center gap-3  transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-[#141414] rounded-lg"
               aria-label="Drishti - Home"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-navy">
-                <Eye className="h-5 w-5 text-amber" aria-hidden="true" />
-              </div>
-              <span className="font-serif text-2xl font-bold tracking-tight">
-                Drishti
-              </span>
+              <Image
+                src="/logo.png"
+                alt="Drishti Logo"
+                width={120}
+                height={32}
+                className="object-cover"
+              />
             </Link>
 
             {/* Desktop Navigation */}
@@ -45,7 +58,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-lg font-medium text-navy/80 transition-colors hover:text-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 rounded-lg px-2 py-1"
+                  className={`text-sm font-medium ${scrolled ? "text-gray-100" : "text-gray-900"} transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-amber rounded-lg px-2 py-1`}
                 >
                   {link.label}
                 </Link>
@@ -56,7 +69,7 @@ export function Navbar() {
             <div className="hidden lg:block">
               <a
                 href="#contact"
-                className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-[#cfac6e] px-6 py-3 text-base font-semibold text-[#FAF6F0] shadow-[0_12px_30px_rgba(15,33,55,0.18)] transition-all duration-300 hover:-translate-y-0.5 t focus:outline-none"
+                className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-[#333] border border-white/10 px-6 py-2 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#cfac6e] hover:text-[#141414] focus:outline-none"
               >
                 Get Started
               </a>
@@ -65,10 +78,9 @@ export function Navbar() {
             {/* Mobile Menu Button */}
             <button
               type="button"
-              className="lg:hidden flex h-12 w-12 items-center justify-center rounded-lg text-navy transition-colors hover:bg-cream-300/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2"
+              className="lg:hidden flex h-10 w-10 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10 focus:outline-none"
               onClick={() => setIsOpen(!isOpen)}
               aria-expanded={isOpen}
-              aria-controls="mobile-menu"
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? (
@@ -89,9 +101,9 @@ export function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="lg:hidden overflow-hidden"
+              className="lg:hidden overflow-hidden bg-[#141414] border-b border-white/10"
             >
-              <div className="border-t border-cream-300/50 px-6 py-6">
+              <div className="px-6 py-6">
                 <div className="flex flex-col gap-4">
                   {navLinks.map((link, index) => (
                     <motion.div
@@ -102,7 +114,7 @@ export function Navbar() {
                     >
                       <Link
                         href={link.href}
-                        className="block text-xl font-medium text-navy/80 transition-colors hover:text-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 rounded-lg px-2 py-2"
+                        className="block text-lg font-medium text-gray-400 transition-colors hover:text-white px-2 py-2"
                         onClick={() => setIsOpen(false)}
                       >
                         {link.label}
@@ -117,7 +129,7 @@ export function Navbar() {
                   >
                     <Link
                       href="#contact"
-                      className="inline-flex w-full items-center justify-center rounded-full bg-navy px-6 py-4 text-lg font-semibold text-cream transition-all hover:bg-navy-700 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2"
+                      className="inline-flex w-full items-center justify-center rounded-full bg-[#cfac6e] px-6 py-4 text-lg font-semibold text-[#141414] transition-all hover:bg-[#b5965e]"
                       onClick={() => setIsOpen(false)}
                     >
                       Get Started

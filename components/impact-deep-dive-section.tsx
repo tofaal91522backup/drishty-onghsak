@@ -112,9 +112,10 @@ export function ImpactDeepDiveSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block rounded-full bg-coral/10 px-4 py-2 text-sm font-semibold text-coral mb-4">
+          <span className="inline-flex mb-4 items-center rounded-full border border-[#E8A838]/25 bg-[#E8A838]/10 px-4 py-2 text-sm font-semibold tracking-wide text-[#E8A838]">
             Our Impact
           </span>
+
           <h2 className="font-serif text-4xl font-bold text-navy md:text-5xl">
             Three Pillars of <span className="italic text-teal">Change</span>
           </h2>
@@ -151,8 +152,8 @@ export function ImpactDeepDiveSection() {
                     pillar.accentColor === "amber"
                       ? "bg-amber/20 text-amber"
                       : pillar.accentColor === "teal"
-                      ? "bg-teal/20 text-teal"
-                      : "bg-coral/20 text-coral"
+                        ? "bg-teal/20 text-teal"
+                        : "bg-coral/20 text-coral"
                   }`}
                 >
                   <Icon className="w-7 h-7" />
