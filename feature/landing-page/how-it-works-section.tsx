@@ -1,9 +1,7 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
-import { twMerge } from "tailwind-merge";
-import { TracingBeam } from "./ui/tracing-beam";
+import { TracingBeam } from "../../components/ui/tracing-beam";
 
 const steps = [
   {
@@ -74,7 +72,7 @@ export function HowItWorksSection() {
                       alt={item.title}
                       width={1200}
                       height={800}
-                      priority={index === 0}
+                      loading="lazy"
                       className="h-[220px] w-full object-cover transition-transform duration-500 hover:scale-105 md:h-[380px]"
                     />
                   </div>

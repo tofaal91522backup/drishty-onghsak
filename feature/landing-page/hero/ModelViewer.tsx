@@ -1,8 +1,31 @@
-import { FC, Suspense, useRef, useLayoutEffect, useEffect, useMemo } from 'react';
-import { Canvas, useFrame, useLoader, useThree, invalidate } from '@react-three/fiber';
-import { OrbitControls, useGLTF, useFBX, useProgress, Html, Environment, ContactShadows } from '@react-three/drei';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
-import * as THREE from 'three';
+"use client";
+import {
+  ContactShadows,
+  Environment,
+  Html,
+  OrbitControls,
+  useFBX,
+  useGLTF,
+  useProgress,
+} from "@react-three/drei";
+import {
+  Canvas,
+  invalidate,
+  useFrame,
+  useLoader,
+  useThree,
+} from "@react-three/fiber";
+import { motion } from "framer-motion";
+import {
+  FC,
+  Suspense,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+} from "react";
+import * as THREE from "three";
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 
 export interface ViewerProps {
   url: string;
@@ -23,7 +46,16 @@ export interface ViewerProps {
   keyLightIntensity?: number;
   fillLightIntensity?: number;
   rimLightIntensity?: number;
-  environmentPreset?: 'city' | 'sunset' | 'night' | 'dawn' | 'studio' | 'apartment' | 'forest' | 'park' | 'none';
+  environmentPreset?:
+    | "city"
+    | "sunset"
+    | "night"
+    | "dawn"
+    | "studio"
+    | "apartment"
+    | "forest"
+    | "park"
+    | "none";
   autoFrame?: boolean;
   placeholderSrc?: string;
   showScreenshotButton?: boolean;
@@ -33,7 +65,9 @@ export interface ViewerProps {
   onModelLoaded?: () => void;
 }
 
-const isTouch = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+const isTouch =
+  typeof window !== "undefined" &&
+  ("ontouchstart" in window || navigator.maxTouchPoints > 0);
 const deg2rad = (d: number) => (d * Math.PI) / 180;
 const DECIDE = 8; // px before we decide horizontal vs vertical
 const ROTATE_SPEED = 0.005;
@@ -49,9 +83,14 @@ const Loader: FC<{ placeholderSrc?: string }> = ({ placeholderSrc }) => {
   return (
     <Html center>
       {placeholderSrc ? (
-        <img src={placeholderSrc} width={128} height={128} className="blur-lg rounded-lg" />
+        <img
+          src={placeholderSrc}
+          width={128}
+          height={128}
+          className="blur-lg rounded-lg"
+        />
       ) : (
-        `${Math.round(progress)} %`
+        <div className="flex h-16 w-16 animate-spin items-center justify-center rounded-full border-4 border-[#0F2137]/20 border-t-[#E8A838]"></div>
       )}
     </Html>
   );
@@ -115,7 +154,7 @@ const ModelInner: FC<ModelInnerProps> = ({
   fadeIn,
   autoRotate,
   autoRotateSpeed,
-  onLoaded
+  onLoaded,
 }) => {
   const outer = useRef<THREE.Group>(null!);
   const inner = useRef<THREE.Group>(null!);
@@ -127,12 +166,12 @@ const ModelInner: FC<ModelInnerProps> = ({
   const tHov = useRef({ x: 0, y: 0 });
   const cHov = useRef({ x: 0, y: 0 });
 
-  const ext = useMemo(() => url.split('.').pop()!.toLowerCase(), [url]);
+  const ext = useMemo(() => url.split(".").pop()!.toLowerCase(), [url]);
   const content = useMemo<THREE.Object3D | null>(() => {
-    if (ext === 'glb' || ext === 'gltf') return useGLTF(url).scene.clone();
-    if (ext === 'fbx') return useFBX(url).clone();
-    if (ext === 'obj') return useLoader(OBJLoader, url).clone();
-    console.error('Unsupported format:', ext);
+    if (ext === "glb" || ext === "gltf") return useGLTF(url).scene.clone();
+    if (ext === "fbx") return useFBX(url).clone();
+    if (ext === "obj") return useLoader(OBJLoader, url).clone();
+    console.error("Unsupported format:", ext);
     return null;
   }, [url, ext]);
 
@@ -142,7 +181,9 @@ const ModelInner: FC<ModelInnerProps> = ({
     const g = inner.current;
     g.updateWorldMatrix(true, true);
 
-    const sphere = new THREE.Box3().setFromObject(g).getBoundingSphere(new THREE.Sphere());
+    const sphere = new THREE.Box3()
+      .setFromObject(g)
+      .getBoundingSphere(new THREE.Sphere());
     const s = 1 / (sphere.radius * 2);
     g.position.set(-sphere.center.x, -sphere.center.y, -sphere.center.z);
     g.scale.setScalar(s);
@@ -166,7 +207,11 @@ const ModelInner: FC<ModelInnerProps> = ({
       const persp = camera as THREE.PerspectiveCamera;
       const fitR = sphere.radius * s;
       const d = (fitR * 1.2) / Math.sin((persp.fov * Math.PI) / 180 / 2);
-      persp.position.set(pivotW.current.x, pivotW.current.y, pivotW.current.z + d);
+      persp.position.set(
+        pivotW.current.x,
+        pivotW.current.y,
+        pivotW.current.z + d,
+      );
       persp.near = d / 10;
       persp.far = d * 10;
       persp.updateProjectionMatrix();
@@ -198,11 +243,11 @@ const ModelInner: FC<ModelInnerProps> = ({
     let lx = 0,
       ly = 0;
     const down = (e: PointerEvent) => {
-      if (e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
+      if (e.pointerType !== "mouse" && e.pointerType !== "pen") return;
       drag = true;
       lx = e.clientX;
       ly = e.clientY;
-      window.addEventListener('pointerup', up);
+      window.addEventListener("pointerup", up);
     };
     const move = (e: PointerEvent) => {
       if (!drag) return;
@@ -216,12 +261,12 @@ const ModelInner: FC<ModelInnerProps> = ({
       invalidate();
     };
     const up = () => (drag = false);
-    el.addEventListener('pointerdown', down);
-    el.addEventListener('pointermove', move);
+    el.addEventListener("pointerdown", down);
+    el.addEventListener("pointermove", move);
     return () => {
-      el.removeEventListener('pointerdown', down);
-      el.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerup', up);
+      el.removeEventListener("pointerdown", down);
+      el.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", up);
     };
   }, [gl, enableManualRotation]);
 
@@ -229,8 +274,8 @@ const ModelInner: FC<ModelInnerProps> = ({
     if (!isTouch) return;
     const el = gl.domElement;
     const pts = new Map<number, { x: number; y: number }>();
-    type Mode = 'idle' | 'decide' | 'rotate' | 'pinch';
-    let mode: Mode = 'idle';
+    type Mode = "idle" | "decide" | "rotate" | "pinch";
+    let mode: Mode = "idle";
     let sx = 0,
       sy = 0,
       lx = 0,
@@ -239,14 +284,14 @@ const ModelInner: FC<ModelInnerProps> = ({
       startZ = 0;
 
     const down = (e: PointerEvent) => {
-      if (e.pointerType !== 'touch') return;
+      if (e.pointerType !== "touch") return;
       pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
       if (pts.size === 1) {
-        mode = 'decide';
+        mode = "decide";
         sx = lx = e.clientX;
         sy = ly = e.clientY;
       } else if (pts.size === 2 && enableManualZoom) {
-        mode = 'pinch';
+        mode = "pinch";
         const [p1, p2] = [...pts.values()];
         startDist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
         startZ = camera.position.z;
@@ -261,21 +306,21 @@ const ModelInner: FC<ModelInnerProps> = ({
       p.x = e.clientX;
       p.y = e.clientY;
 
-      if (mode === 'decide') {
+      if (mode === "decide") {
         const dx = e.clientX - sx;
         const dy = e.clientY - sy;
         if (Math.abs(dx) > DECIDE || Math.abs(dy) > DECIDE) {
           if (enableManualRotation && Math.abs(dx) > Math.abs(dy)) {
-            mode = 'rotate';
+            mode = "rotate";
             el.setPointerCapture(e.pointerId);
           } else {
-            mode = 'idle';
+            mode = "idle";
             pts.clear();
           }
         }
       }
 
-      if (mode === 'rotate') {
+      if (mode === "rotate") {
         e.preventDefault();
         const dx = e.clientX - lx;
         const dy = e.clientY - ly;
@@ -285,46 +330,52 @@ const ModelInner: FC<ModelInnerProps> = ({
         outer.current.rotation.x += dy * ROTATE_SPEED;
         vel.current = { x: dx * ROTATE_SPEED, y: dy * ROTATE_SPEED };
         invalidate();
-      } else if (mode === 'pinch' && pts.size === 2) {
+      } else if (mode === "pinch" && pts.size === 2) {
         e.preventDefault();
         const [p1, p2] = [...pts.values()];
         const d = Math.hypot(p1.x - p2.x, p1.y - p2.y);
         const ratio = startDist / d;
-        camera.position.z = THREE.MathUtils.clamp(startZ * ratio, minZoom, maxZoom);
+        camera.position.z = THREE.MathUtils.clamp(
+          startZ * ratio,
+          minZoom,
+          maxZoom,
+        );
         invalidate();
       }
     };
 
     const up = (e: PointerEvent) => {
       pts.delete(e.pointerId);
-      if (mode === 'rotate' && pts.size === 0) mode = 'idle';
-      if (mode === 'pinch' && pts.size < 2) mode = 'idle';
+      if (mode === "rotate" && pts.size === 0) mode = "idle";
+      if (mode === "pinch" && pts.size < 2) mode = "idle";
     };
 
-    el.addEventListener('pointerdown', down, { passive: true });
-    window.addEventListener('pointermove', move, { passive: false });
-    window.addEventListener('pointerup', up, { passive: true });
-    window.addEventListener('pointercancel', up, { passive: true });
+    el.addEventListener("pointerdown", down, { passive: true });
+    window.addEventListener("pointermove", move, { passive: false });
+    window.addEventListener("pointerup", up, { passive: true });
+    window.addEventListener("pointercancel", up, { passive: true });
     return () => {
-      el.removeEventListener('pointerdown', down);
-      window.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerup', up);
-      window.removeEventListener('pointercancel', up);
+      el.removeEventListener("pointerdown", down);
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", up);
+      window.removeEventListener("pointercancel", up);
     };
   }, [gl, enableManualRotation, enableManualZoom, minZoom, maxZoom]);
 
   useEffect(() => {
     if (isTouch) return;
     const mm = (e: PointerEvent) => {
-      if (e.pointerType !== 'mouse') return;
+      if (e.pointerType !== "mouse") return;
       const nx = (e.clientX / window.innerWidth) * 2 - 1;
       const ny = (e.clientY / window.innerHeight) * 2 - 1;
-      if (enableMouseParallax) tPar.current = { x: -nx * PARALLAX_MAG, y: -ny * PARALLAX_MAG };
-      if (enableHoverRotation) tHov.current = { x: ny * HOVER_MAG, y: nx * HOVER_MAG };
+      if (enableMouseParallax)
+        tPar.current = { x: -nx * PARALLAX_MAG, y: -ny * PARALLAX_MAG };
+      if (enableHoverRotation)
+        tHov.current = { x: ny * HOVER_MAG, y: nx * HOVER_MAG };
       invalidate();
     };
-    window.addEventListener('pointermove', mm);
-    return () => window.removeEventListener('pointermove', mm);
+    window.addEventListener("pointermove", mm);
+    return () => window.removeEventListener("pointermove", mm);
   }, [enableMouseParallax, enableHoverRotation]);
 
   useFrame((_, dt) => {
@@ -353,7 +404,8 @@ const ModelInner: FC<ModelInnerProps> = ({
     outer.current.rotation.x += vel.current.y;
     vel.current.x *= INERTIA;
     vel.current.y *= INERTIA;
-    if (Math.abs(vel.current.x) > 1e-4 || Math.abs(vel.current.y) > 1e-4) need = true;
+    if (Math.abs(vel.current.x) > 1e-4 || Math.abs(vel.current.y) > 1e-4)
+      need = true;
 
     if (
       Math.abs(cPar.current.x - tPar.current.x) > 1e-4 ||
@@ -395,14 +447,14 @@ const ModelViewer: FC<ViewerProps> = ({
   keyLightIntensity = 1,
   fillLightIntensity = 0.5,
   rimLightIntensity = 0.8,
-  environmentPreset = 'forest',
+  environmentPreset = "forest",
   autoFrame = false,
   placeholderSrc,
   showScreenshotButton = true,
   fadeIn = false,
   autoRotate = false,
   autoRotateSpeed = 0.35,
-  onModelLoaded
+  onModelLoaded,
 }) => {
   useEffect(() => void useGLTF.preload(url), [url]);
   const pivot = useRef(new THREE.Vector3()).current;
@@ -413,7 +465,10 @@ const ModelViewer: FC<ViewerProps> = ({
 
   const initYaw = deg2rad(defaultRotationX);
   const initPitch = deg2rad(defaultRotationY);
-  const camZ = Math.min(Math.max(defaultZoom, minZoomDistance), maxZoomDistance);
+  const camZ = Math.min(
+    Math.max(defaultZoom, minZoomDistance),
+    maxZoomDistance,
+  );
 
   const capture = () => {
     const g = rendererRef.current,
@@ -423,16 +478,16 @@ const ModelViewer: FC<ViewerProps> = ({
     g.shadowMap.enabled = false;
     const tmp: { l: THREE.Light; cast: boolean }[] = [];
     s.traverse((o: any) => {
-      if (o.isLight && 'castShadow' in o) {
+      if (o.isLight && "castShadow" in o) {
         tmp.push({ l: o, cast: o.castShadow });
         o.castShadow = false;
       }
     });
     if (contactRef.current) contactRef.current.visible = false;
     g.render(s, c);
-    const urlPNG = g.domElement.toDataURL('image/png');
-    const a = document.createElement('a');
-    a.download = 'model.png';
+    const urlPNG = g.domElement.toDataURL("image/png");
+    const a = document.createElement("a");
+    a.download = "model.png";
     a.href = urlPNG;
     a.click();
     g.shadowMap.enabled = true;
@@ -442,73 +497,106 @@ const ModelViewer: FC<ViewerProps> = ({
   };
 
   return (
-    <div
-      style={{
-        width,
-        height,
-        touchAction: 'pan-y pinch-zoom'
+    <motion.div
+      animate={{ y: [-8, 8, -8] }}
+      transition={{
+        duration: 4.5,
+        repeat: Infinity,
+        ease: "easeInOut",
       }}
-      className="relative"
+      className="relative z-20 flex h-full w-full items-center justify-center scale-[1.08] sm:scale-[1.12] lg:scale-[1.14]"
     >
-      {showScreenshotButton && (
-        <button
-          onClick={capture}
-          className="absolute top-4 right-4 z-10 cursor-pointer px-4 py-2 border border-white rounded-xl bg-transparent text-white hover:bg-white hover:text-black transition-colors"
-        >
-          Take Screenshot
-        </button>
-      )}
-
-      <Canvas
-        shadows
-        frameloop="demand"
-        gl={{ preserveDrawingBuffer: true }}
-        onCreated={({ gl, scene, camera }) => {
-          rendererRef.current = gl;
-          sceneRef.current = scene;
-          cameraRef.current = camera;
-          gl.toneMapping = THREE.ACESFilmicToneMapping;
-          gl.outputColorSpace = THREE.SRGBColorSpace;
+      <div
+        style={{
+          width,
+          height,
+          touchAction: "pan-y pinch-zoom",
         }}
-        camera={{ fov: 50, position: [0, 0, camZ], near: 0.01, far: 100 }}
-        style={{ touchAction: 'pan-y pinch-zoom' }}
+        className="relative"
       >
-        {environmentPreset !== 'none' && <Environment preset={environmentPreset as any} background={false} />}
-
-        <ambientLight intensity={ambientIntensity} />
-        <directionalLight position={[5, 5, 5]} intensity={keyLightIntensity} castShadow />
-        <directionalLight position={[-5, 2, 5]} intensity={fillLightIntensity} />
-        <directionalLight position={[0, 4, -5]} intensity={rimLightIntensity} />
-
-        <ContactShadows ref={contactRef as any} position={[0, -0.5, 0]} opacity={0.35} scale={10} blur={2} />
-
-        <Suspense fallback={<Loader placeholderSrc={placeholderSrc} />}>
-          <ModelInner
-            url={url}
-            xOff={modelXOffset}
-            yOff={modelYOffset}
-            pivot={pivot}
-            initYaw={initYaw}
-            initPitch={initPitch}
-            minZoom={minZoomDistance}
-            maxZoom={maxZoomDistance}
-            enableMouseParallax={enableMouseParallax}
-            enableManualRotation={enableManualRotation}
-            enableHoverRotation={enableHoverRotation}
-            enableManualZoom={enableManualZoom}
-            autoFrame={autoFrame}
-            fadeIn={fadeIn}
-            autoRotate={autoRotate}
-            autoRotateSpeed={autoRotateSpeed}
-            onLoaded={onModelLoaded}
-          />
-        </Suspense>
-
-        {!isTouch && (
-          <DesktopControls pivot={pivot} min={minZoomDistance} max={maxZoomDistance} zoomEnabled={enableManualZoom} />
+        {showScreenshotButton && (
+          <button
+            onClick={capture}
+            className="absolute top-4 right-4 z-10 cursor-pointer px-4 py-2 border border-white rounded-xl bg-transparent text-white hover:bg-white hover:text-black transition-colors"
+          >
+            Take Screenshot
+          </button>
         )}
-      </Canvas>
-    </div>
+
+        <Canvas
+          shadows
+          frameloop="demand"
+          gl={{ preserveDrawingBuffer: true }}
+          onCreated={({ gl, scene, camera }) => {
+            rendererRef.current = gl;
+            sceneRef.current = scene;
+            cameraRef.current = camera;
+            gl.toneMapping = THREE.ACESFilmicToneMapping;
+            gl.outputColorSpace = THREE.SRGBColorSpace;
+          }}
+          camera={{ fov: 50, position: [0, 0, camZ], near: 0.01, far: 100 }}
+          style={{ touchAction: "pan-y pinch-zoom" }}
+        >
+          {environmentPreset !== "none" && (
+            <Environment preset={environmentPreset as any} background={false} />
+          )}
+
+          <ambientLight intensity={ambientIntensity} />
+          <directionalLight
+            position={[5, 5, 5]}
+            intensity={keyLightIntensity}
+            castShadow
+          />
+          <directionalLight
+            position={[-5, 2, 5]}
+            intensity={fillLightIntensity}
+          />
+          <directionalLight
+            position={[0, 4, -5]}
+            intensity={rimLightIntensity}
+          />
+
+          <ContactShadows
+            ref={contactRef as any}
+            position={[0, -0.5, 0]}
+            opacity={0.35}
+            scale={10}
+            blur={2}
+          />
+
+          <Suspense fallback={<Loader placeholderSrc={placeholderSrc} />}>
+            <ModelInner
+              url={url}
+              xOff={modelXOffset}
+              yOff={modelYOffset}
+              pivot={pivot}
+              initYaw={initYaw}
+              initPitch={initPitch}
+              minZoom={minZoomDistance}
+              maxZoom={maxZoomDistance}
+              enableMouseParallax={enableMouseParallax}
+              enableManualRotation={enableManualRotation}
+              enableHoverRotation={enableHoverRotation}
+              enableManualZoom={enableManualZoom}
+              autoFrame={autoFrame}
+              fadeIn={fadeIn}
+              autoRotate={autoRotate}
+              autoRotateSpeed={autoRotateSpeed}
+              onLoaded={onModelLoaded}
+            />
+          </Suspense>
+
+          {!isTouch && (
+            <DesktopControls
+              pivot={pivot}
+              min={minZoomDistance}
+              max={maxZoomDistance}
+              zoomEnabled={enableManualZoom}
+            />
+          )}
+        </Canvas>
+      </div>
+    </motion.div>
   );
 };
 

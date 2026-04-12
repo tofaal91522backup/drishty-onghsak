@@ -399,6 +399,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
             title={(item as any).title}
             draggable={false}
             loading="lazy"
+            
         
           />
         );

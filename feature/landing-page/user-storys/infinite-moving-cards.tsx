@@ -85,6 +85,7 @@ export const InfiniteMovingCards = ({
               width={80}
               height={80}
               className="mb-4 h-20 w-20 rounded-full object-cover mx-auto"
+              loading="lazy"
             />
             {/* Quote */}
             <blockquote className="text-center mb-4">
