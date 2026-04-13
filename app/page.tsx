@@ -9,21 +9,52 @@ import { StatsBar } from "@/feature/landing-page/stats-bar";
 import { UserStoriesSection } from "@/feature/landing-page/user-storys/user-stories-section";
 
 export default function Home() {
+  const navLinks = [
+    { href: "#stories", label: "Stories" },
+    { href: "#how-it-works", label: "How It Works" },
+    { href: "#product", label: "Product" },
+    { href: "#impact", label: "Impact" },
+    { href: "#join", label: "Join Us" },
+    { href: "#contact", label: "Contact" },
+  ];
+
   return (
     <div className="min-h-screen bg-cream">
-      <Navbar />
+      <Navbar navLinks={navLinks} />
 
       <main>
-        <HeroSection />
-        <StatsBar />
-        <UserStoriesSection />
-        <HowItWorksSection />
-        <ProductsSection />
-        <ImpactDeepDiveSection />
-        <DistributorSection />
+        <section id="home">
+          <HeroSection />
+        </section>
+
+        <section id="stats">
+          <StatsBar />
+        </section>
+
+        <section id="stories">
+          <UserStoriesSection />
+        </section>
+
+        <section id="how-it-works">
+          <HowItWorksSection />
+        </section>
+
+        <section id="product">
+          <ProductsSection />
+        </section>
+
+        <section id="impact">
+          <ImpactDeepDiveSection />
+        </section>
+
+        <section id="join">
+          <DistributorSection />
+        </section>
       </main>
 
-      <Footer />
+      <section id="contact">
+        <Footer />
+      </section>
     </div>
   );
 }

@@ -1,24 +1,19 @@
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetClose,
-  SheetTitle,
-} from "@/components/ui/sheet";
 
-const navLinks = [
-  { href: "#stories", label: "Stories" },
-  { href: "#how-it-works", label: "How It Works" },
-  { href: "#product", label: "Product" },
-  { href: "#impact", label: "Impact" },
-  { href: "#join", label: "Join Us" },
-  { href: "#contact", label: "Contact" },
-];
-
-export function Navbar() {
+export function Navbar({
+  navLinks,
+}: {
+  navLinks: { href: string; label: string }[];
+}) {
   return (
     <header className="absolute top-0 left-0 right-0 z-50">
       <nav

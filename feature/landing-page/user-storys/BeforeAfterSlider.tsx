@@ -26,8 +26,8 @@ const BeforeAfterSlider = () => {
         {/* IMAGE SLIDER */}
         <div className="relative h-[280px] w-full sm:h-[420px] md:h-[520px] lg:h-[85vh] lg:max-h-[820px]">
           <Compare
-            firstImage="/images/before.png"
-            secondImage="/images/after.png"
+            firstImage="/images/before.jpg"
+            secondImage="/images/after.jpg"
             firstImageClassName="object-cover object-center w-full h-full"
             secondImageClassname="object-cover object-center w-full h-full"
             className="h-full w-full"

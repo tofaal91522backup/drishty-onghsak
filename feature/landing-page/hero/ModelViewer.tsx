@@ -487,7 +487,7 @@ const ModelViewer: FC<ViewerProps> = ({
     g.render(s, c);
     const urlPNG = g.domElement.toDataURL("image/png");
     const a = document.createElement("a");
-    a.download = "model.png";
+    a.download = "model.jpg";
     a.href = urlPNG;
     a.click();
     g.shadowMap.enabled = true;

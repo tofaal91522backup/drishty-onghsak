@@ -1,6 +1,4 @@
-import { Suspense } from "react";
 import ModelViewer from "./ModelViewer";
-import { Spinner } from "@/components/ui/spinner";
 
 const RightModel = () => {
   return (
@@ -19,16 +17,16 @@ const RightModel = () => {
       </div>
 
       <ModelViewer
-        url="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/SheenChair/glTF-Binary/SheenChair.glb"
+        url="./hero-model/smartCane-v12.glb"
         width="100%"
         height="100%"
         modelXOffset={0}
-        modelYOffset={0.3}
+        modelYOffset={0}
         autoFrame
         enableMouseParallax
         enableHoverRotation
         environmentPreset="forest"
-        fadeIn
+        // fadeIn
         autoRotate
         autoRotateSpeed={0.3}
         showScreenshotButton={false}

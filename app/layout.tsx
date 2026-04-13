@@ -17,27 +17,18 @@ export const metadata: Metadata = {
   description:
     "Drishti builds innovative assistive technology with smart canes that empower the visually impaired to navigate the world with confidence and independence.",
   keywords: [
+    "Ongshak",
     "assistive technology",
     "smart cane",
     "visually impaired",
     "blind navigation",
     "accessibility",
   ],
-  generator: "v0.app",
+  manifest: "/site.webmanifest",
   icons: {
     icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
     ],
     apple: "/apple-icon.png",
   },
