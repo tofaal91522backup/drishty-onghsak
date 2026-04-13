@@ -2,7 +2,7 @@ import ModelViewer from "./ModelViewer";
 
 const RightModel = () => {
   return (
-    <div className="relative z-10 mx-auto flex aspect-square w-full max-w-[340px] items-center justify-center sm:max-w-[440px] lg:max-w-[680px]">
+    <div className="relative z-10 mx-auto flex aspect-square w-full max-w-[340px] items-center justify-center sm:max-w-[440px] lg:max-w-[680px] cursor-grab">
       <div className="absolute inset-0 scale-95 rounded-full bg-gradient-to-tr from-[#E8A838]/15 via-transparent to-[#2A9D8F]/15 blur-3xl" />
 
       <div className="absolute inset-1 rounded-full border-[3px] border-transparent border-t-[#E8A838] border-r-[#2A9D8F] border-b-[#0F2137] border-l-[#cfac6e] opacity-75 sm:inset-2 sm:border-[4px]" />
