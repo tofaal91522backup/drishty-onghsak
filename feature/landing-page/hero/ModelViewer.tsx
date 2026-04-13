@@ -558,10 +558,12 @@ const ModelViewer: FC<ViewerProps> = ({
 
           <ContactShadows
             ref={contactRef as any}
-            position={[0, -0.5, 0]}
-            opacity={0.35}
-            scale={10}
-            blur={2}
+            position={[0, -0.22, 0]}
+            opacity={0.16}
+            scale={2.8}
+            blur={3.8}
+            far={1.2}
+            resolution={1024}
           />
 
           <Suspense fallback={<Loader placeholderSrc={placeholderSrc} />}>

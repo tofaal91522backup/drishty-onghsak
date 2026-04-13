@@ -17,7 +17,7 @@ const RightModel = () => {
       </div>
 
       <ModelViewer
-        url="./hero-model/smartCane-v12.glb"
+        url="./hero-model/smartCane.glb"
         width="100%"
         height="100%"
         modelXOffset={0}
@@ -26,7 +26,7 @@ const RightModel = () => {
         enableMouseParallax
         enableHoverRotation
         environmentPreset="forest"
-        // fadeIn
+        fadeIn
         autoRotate
         autoRotateSpeed={0.3}
         showScreenshotButton={false}
