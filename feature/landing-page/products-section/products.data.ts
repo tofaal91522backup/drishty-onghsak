@@ -26,7 +26,7 @@ export const products = [
     description:
       "A wearable device with AI-powered scene description and GPS navigation, providing real-time audio guidance for complete independence.",
     accent: "#2A9D8F",
-    image: "/products/abhash-smart-glasses",
+    image:  "/images/product-images/smart-glass/glass1.png",
     tags: [
       "GPS Navigation",
       "AI Scene Description",
