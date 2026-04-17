@@ -4,6 +4,8 @@ import NextTopLoader from "nextjs-toploader";
 
 import "./globals.css";
 import ScrollToTop from "@/components/ui/ScrollToTop";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 
 // Sans font (main UI font)
 const poppins = Poppins({
@@ -13,7 +15,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Drishti - Smart Canes for the Visually Impaired",
+  title: "Drishti",
   description:
     "Drishti builds innovative assistive technology with smart canes that empower the visually impaired to navigate the world with confidence and independence.",
   keywords: [
@@ -25,13 +27,6 @@ export const metadata: Metadata = {
     "accessibility",
   ],
   manifest: "/site.webmanifest",
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.svg", type: "image/svg+xml" },
-    ],
-    apple: "/apple-icon.png",
-  },
 };
 
 export const viewport: Viewport = {
@@ -48,7 +43,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable}`}>
       <body className=" antialiased bg-cream text-navy">
+        <Navbar />
         {children}
+        <section id="contact">
+          <Footer />
+        </section>
         <NextTopLoader showSpinner={false} color="#ed8c2f" />
         <ScrollToTop />
       </body>

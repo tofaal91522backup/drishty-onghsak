@@ -1,50 +1,7 @@
 import Image from "next/image";
 import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
-
-const products = [
-  {
-    name: "Abhash Smart Cane",
-    eyebrow: "Flagship Mobility",
-    description:
-      "Our flagship smart cane with advanced obstacle detection and haptic feedback, designed for intuitive navigation in any environment.",
-    accent: "#E8A838",
-    image: "https://irisvision.com/wp-content/uploads/2024/09/3.webp",
-    tags: [
-      "Ultrasonic Sensing",
-      "Haptic Feedback",
-      "Long Battery Life",
-      "Lightweight",
-    ],
-    features: [
-      "3-meter obstacle detection range",
-      "Vibration alerts for different obstacles",
-      "15+ hours battery life",
-      "Ergonomic folding design",
-    ],
-  },
-  {
-    name: "AI Wearable Companion",
-    eyebrow: "Intelligent Guidance",
-    description:
-      "A wearable device with AI-powered scene description and GPS navigation, providing real-time audio guidance for complete independence.",
-    accent: "#2A9D8F",
-    image:
-      "https://www.shutterstock.com/image-vector/blind-woman-holding-stick-mobile-600nw-1661441773.jpg",
-    tags: [
-      "GPS Navigation",
-      "AI Scene Description",
-      "Voice Assistant",
-      "Emergency SOS",
-    ],
-    features: [
-      "Real-time environment description",
-      "Turn-by-turn voice navigation",
-      "One-touch emergency alerts",
-      "All-day battery performance",
-    ],
-  },
-];
+import { products } from "./products.data";
 
 export function ProductsSection() {
   return (
@@ -105,7 +62,7 @@ export function ProductsSection() {
                     src={product.image}
                     alt={product.name}
                     fill
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    className="object-contain transition-transform duration-700 ease-out group-hover:scale-105"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/35 via-transparent to-transparent lg:bg-gradient-to-r" />
@@ -178,7 +135,7 @@ export function ProductsSection() {
                   {/* CTA */}
                   <div className="mt-auto border-t border-slate-100 pt-6 sm:pt-8">
                     <Link
-                      href="#contact"
+                      href={product.link}
                       className="group/btn inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0F2137] px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:w-auto sm:px-8"
                     >
                       <span>Explore Details</span>

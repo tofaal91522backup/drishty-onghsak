@@ -49,9 +49,9 @@ export function DistributorSection() {
               </h2>
 
               <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[#5A6779] sm:text-lg lg:mx-0">
-                Join our mission to bring assistive technology across Bangladesh.
-                Build a meaningful, profitable career while making a direct impact
-                in your own region.
+                Join our mission to bring assistive technology across
+                Bangladesh. Build a meaningful, profitable career while making a
+                direct impact in your own region.
               </p>
 
               <div className="mt-8 grid grid-cols-3 gap-3 sm:gap-4">
@@ -77,10 +77,7 @@ export function DistributorSection() {
 
             {/* MOBILE MAP */}
             <div className="mx-auto w-full max-w-2xl lg:hidden">
-              <ManchitroMap
-                className="my-8"
-            
-              />
+              <ManchitroMap className="my-8" />
             </div>
 
             {/* BOTTOM CONTENT */}
@@ -105,16 +102,6 @@ export function DistributorSection() {
                     </div>
                   ))}
                 </div>
-              </div>
-
-              <div className="mt-10 lg:mt-12">
-                <a
-                  href="#apply"
-                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0F2137] px-6 py-3.5 text-sm font-bold text-white transition-all hover:bg-[#E8A838] hover:shadow-lg hover:shadow-[#E8A838]/20 sm:w-auto sm:px-8 sm:py-4"
-                >
-                  Apply for Your District
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
               </div>
             </div>
           </div>

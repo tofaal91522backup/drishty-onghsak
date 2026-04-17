@@ -45,12 +45,12 @@ export const InfiniteMovingCards = ({
 
       containerRef.current.style.setProperty(
         "--animation-direction",
-        direction === "left" ? "forwards" : "reverse",
+        direction === "left" ? "forwards" : "reverse"
       );
 
       containerRef.current.style.setProperty(
         "--animation-duration",
-        speedMap[speed],
+        speedMap[speed]
       );
 
       setStart(true);
@@ -63,7 +63,7 @@ export const InfiniteMovingCards = ({
       className={cn(
         "relative z-20 overflow-hidden",
         "[mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]",
-        className,
+        className
       )}
     >
       <ul
@@ -71,38 +71,41 @@ export const InfiniteMovingCards = ({
         className={cn(
           "flex w-max flex-nowrap gap-6 py-6",
           start && "animate-scroll",
-          pauseOnHover && "hover:[animation-play-state:paused]",
+          pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
         {items.map((item, idx) => (
           <li
             key={idx}
-            className="group relative flex w-[320px] md:w-[420px] flex-col shrink-0 rounded-[1.8rem] border border-[#0F2137]/8 bg-white/80 backdrop-blur p-6 justify-center  transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(15,33,55,0.12)]"
+            className="group relative flex h-[500px] w-[320px] shrink-0 flex-col rounded-[1.8rem] border border-[#0F2137]/8 bg-white/80 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(15,33,55,0.12)] md:h-[540px] md:w-[420px]"
           >
-            <Image
-              src={item.profile_link}
-              alt={item.name}
-              width={80}
-              height={80}
-              className="mb-4 h-20 w-20 rounded-full object-cover mx-auto"
-              loading="lazy"
-            />
-            {/* Quote */}
-            <blockquote className="text-center mb-4">
-              <p className="text-[#3E4A5A] italic leading-relaxed text-sm md:text-base">
-                “{item.quote}”
-              </p>
-            </blockquote>
+            <div className="flex flex-col items-center">
+              <Image
+                src={item.profile_link}
+                alt={item.name}
+                width={80}
+                height={80}
+                className="mx-auto mb-4 h-20 w-20 rounded-full object-cover"
+                loading="lazy"
+              />
+            </div>
 
-            {/* Info */}
-            <div className="text-center">
+            <div className="flex-1">
+              <blockquote className="mb-4 text-center">
+                <p className="line-clamp-8 text-sm italic leading-relaxed text-[#3E4A5A] md:text-base">
+                  “{item.quote}”
+                </p>
+              </blockquote>
+            </div>
+
+            <div className="mt-auto border-t border-[#0F2137]/8 pt-4 text-center">
               <p className="font-serif text-xl font-bold text-[#0F2137]">
                 {item.name}
               </p>
-
-              <p className="text-sm font-medium text-[#2A9D8F]">{item.study}</p>
-
-              <p className="text-sm text-[#6B7280]">{item.college}</p>
+              <p className="mt-1 text-sm font-medium text-[#2A9D8F]">
+                {item.study}
+              </p>
+              <p className="mt-1 text-sm text-[#6B7280]">{item.college}</p>
             </div>
           </li>
         ))}

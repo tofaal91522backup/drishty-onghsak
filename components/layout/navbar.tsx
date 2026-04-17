@@ -5,28 +5,30 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { Menu, Info, Users, Accessibility, Glasses } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import ProductsDropdown from "./ProductsDropdown";
 
-export function Navbar({
-  navLinks,
-}: {
-  navLinks: { href: string; label: string }[];
-}) {
+const navLinks = [
+  { href: "/about", label: "About Us" },
+  { href: "/our-teams", label: "Our Teams" },
+];
+
+export function Navbar() {
   return (
-    <header className="absolute top-0 left-0 right-0 z-50">
+    <header className="absolute left-0 right-0 top-0 z-40">
       <nav
-        className="transition-all duration-300 border-b bg-transparent border-transparent py-5"
+        className="border-b border-transparent bg-transparent py-4 transition-all duration-300"
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="mx-auto container px-6 md:px-12">
+        <div className="container mx-auto px-6 md:px-12">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center gap-3 transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-[#141414] rounded-lg"
+              className="flex items-center gap-3 rounded-lg transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-[#141414]"
               aria-label="Drishti - Home"
             >
               <Image
@@ -34,61 +36,97 @@ export function Navbar({
                 alt="Drishti Logo"
                 width={120}
                 height={32}
-                className="object-cover"
-                loading="lazy"
+                className="object-contain"
+                priority
               />
             </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex lg:items-center lg:gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-lg font-medium text-gray-900 transition-colors  focus:outline-none focus-visible:ring-2 focus-visible:ring-amber rounded-lg px-2 py-1"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              <Link
+                href="/about"
+                className="flex items-center gap-2 rounded-lg px-2 py-1 text-lg font-medium text-gray-900 transition-colors hover:text-[#cfac6e] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber"
+              >
+                <Info className="h-4 w-4" />
+                About Us
+              </Link>
+
+              <ProductsDropdown />
+
+              <Link
+                href="/our-teams"
+                className="flex items-center gap-2 rounded-lg px-2 py-1 text-lg font-medium text-gray-900 transition-colors hover:text-[#cfac6e] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber"
+              >
+                <Users className="h-4 w-4" />
+                Our Teams
+              </Link>
             </div>
 
             {/* CTA Button - Desktop */}
-            <div className="hidden lg:block">
-              <a
+            {/* <div className="hidden lg:block">
+              <Link
                 href="#contact"
-                className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-[#333] border border-white/10 px-6 py-2 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#cfac6e] hover:text-[#141414] focus:outline-none"
+                className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/10 bg-[#333] px-6 py-2 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#cfac6e] hover:text-[#141414] focus:outline-none"
               >
                 Get Started
-              </a>
-            </div>
+              </Link>
+            </div> */}
 
-            {/* Mobile Menu Button & Sheet */}
+            {/* Mobile Menu */}
             <div className="lg:hidden">
               <Sheet>
-                <SheetTrigger className="flex h-10 w-10 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10 focus:outline-none">
-                  <Menu className="h-6 w-6" aria-hidden="true" color="black" />
+                <SheetTrigger className="flex h-10 w-10 items-center justify-center rounded-lg text-black transition-colors hover:bg-black/5 focus:outline-none">
+                  <Menu className="h-6 w-6" aria-hidden="true" />
                 </SheetTrigger>
 
-                {/* side="top" matches your original downward expanding animation */}
                 <SheetContent
                   side="right"
-                  className="bg-[#141414]/95 border-b border-white/10 px-6 py-6"
+                  className="border-l border-white/10 bg-[#141414]/95 px-6 py-6 text-white"
                 >
-                  {/* Title is required for screen readers by Radix UI */}
                   <SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
 
-                  <div className="flex flex-col gap-4 mt-6">
-                    {navLinks.map((link) => (
-                      <SheetClose asChild key={link.href}>
-                        <Link
-                          href={link.href}
-                          className="block text-lg font-medium text-gray-400 transition-colors hover:text-white px-2 py-2"
-                        >
-                          {link.label}
-                        </Link>
-                      </SheetClose>
-                    ))}
-                    <div className="pt-4">
+                  <div className="mt-6 flex flex-col gap-4">
+                    <SheetClose asChild>
+                      <Link
+                        href="/about"
+                        className="flex items-center gap-3 px-2 py-2 text-lg font-medium text-gray-300 transition-colors hover:text-white"
+                      >
+                        <Info className="h-4 w-4" />
+                        About Us
+                      </Link>
+                    </SheetClose>
+
+                    <SheetClose asChild>
+                      <Link
+                        href="/products/abhash-smart-cane"
+                        className="flex items-center gap-3 px-2 py-2 text-lg font-medium text-gray-300 transition-colors hover:text-white"
+                      >
+                        <Accessibility className="h-4 w-4" />
+                        Abhash Smart Cane
+                      </Link>
+                    </SheetClose>
+
+                    <SheetClose asChild>
+                      <Link
+                        href="/products/abhash-smart-glasses"
+                        className="flex items-center gap-3 px-2 py-2 text-lg font-medium text-gray-300 transition-colors hover:text-white"
+                      >
+                        <Glasses className="h-4 w-4" />
+                        Abhash Smart Glasses
+                      </Link>
+                    </SheetClose>
+
+                    <SheetClose asChild>
+                      <Link
+                        href="/our-teams"
+                        className="flex items-center gap-3 px-2 py-2 text-lg font-medium text-gray-300 transition-colors hover:text-white"
+                      >
+                        <Users className="h-4 w-4" />
+                        Our Teams
+                      </Link>
+                    </SheetClose>
+
+                    {/* <div className="pt-4">
                       <SheetClose asChild>
                         <Link
                           href="#contact"
@@ -97,7 +135,7 @@ export function Navbar({
                           Get Started
                         </Link>
                       </SheetClose>
-                    </div>
+                    </div> */}
                   </div>
                 </SheetContent>
               </Sheet>

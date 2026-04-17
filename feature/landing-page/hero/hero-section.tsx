@@ -1,3 +1,4 @@
+import Link from "next/link";
 import CaneFeature from "./CaneFeature";
 import RightModel from "./RightModel";
 
@@ -33,19 +34,19 @@ export function HeroSection() {
 
             {/* CTA */}
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4 lg:mt-10 lg:justify-start">
-              <a
-                href="#contact"
+              <Link
+                href="/products/abhash-smart-cane"
                 className="inline-flex min-h-[50px] w-full items-center justify-center rounded-full bg-[#cfac6e] px-7 py-3.5 text-sm font-semibold text-[#FAF6F0] shadow-[0_12px_30px_rgba(15,33,55,0.18)] transition-all duration-300 hover:-translate-y-0.5 sm:w-auto sm:min-h-[52px] sm:px-8 sm:text-base"
               >
                 Pre-order Now
-              </a>
+              </Link>
 
-              <a
-                href="#how-it-works"
+              <Link
+                href="/about"
                 className="inline-flex min-h-[50px] w-full items-center justify-center rounded-full border border-[#0F2137]/15 bg-white/75 px-7 py-3.5 text-sm font-semibold text-[#0F2137] shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-0.5 sm:w-auto sm:min-h-[52px] sm:px-8 sm:text-base"
               >
                 Learn More
-              </a>
+              </Link>
             </div>
             <div className="hidden lg:block">
               <CaneFeature />

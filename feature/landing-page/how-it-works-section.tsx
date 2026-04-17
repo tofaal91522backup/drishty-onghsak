@@ -73,7 +73,7 @@ export function HowItWorksSection() {
                       width={1200}
                       height={800}
                       loading="lazy"
-                      className="h-[220px] w-full object-cover transition-transform duration-500 hover:scale-105 md:h-[380px]"
+                      className="h-[220px] w-full object-cover object-top transition-transform duration-500 hover:scale-105 md:h-[380px]"
                     />
                   </div>
 
