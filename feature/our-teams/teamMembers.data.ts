@@ -40,16 +40,16 @@ export const teamMembers: TeamCardProps[] = [
     right: false,
   },
 
-  {
-    motto: "Our goal is to make it bright even without any light",
-    name: "ANM Noor",
-    designation: "3D Model Designer",
-    description:
-      "ANM Noor, a proficient 3D Model Designer at Drishti, specializing in 3D Modeling, Rendering, Robotics, and Competitive Programming. With a keen interest in felines, Noor is a dedicated cat lover. His exceptional skills were recognized when he clinched the Gold Medal at the World Robotics Olympiad, 2023 (National Round). Noor's expertise in crafting intricate 3D models demonstrates his invaluable contribution to Drishti's innovative projects. Passionate and dedicated, he continues to shape the technological landscape through cutting-edge designs and creative brilliance.",
-    image: "./images/our-teams/noor.png",
-    linkedin: "https://www.linkedin.com/in/noor202012/",
-    right: false,
-  },
+  // {
+  //   motto: "Our goal is to make it bright even without any light",
+  //   name: "ANM Noor",
+  //   designation: "3D Model Designer",
+  //   description:
+  //     "ANM Noor, a proficient 3D Model Designer at Drishti, specializing in 3D Modeling, Rendering, Robotics, and Competitive Programming. With a keen interest in felines, Noor is a dedicated cat lover. His exceptional skills were recognized when he clinched the Gold Medal at the World Robotics Olympiad, 2023 (National Round). Noor's expertise in crafting intricate 3D models demonstrates his invaluable contribution to Drishti's innovative projects. Passionate and dedicated, he continues to shape the technological landscape through cutting-edge designs and creative brilliance.",
+  //   image: "./images/our-teams/noor.png",
+  //   linkedin: "https://www.linkedin.com/in/noor202012/",
+  //   right: false,
+  // },
   // {
   //   motto:
   //     "We are working to build a better world for the visually impaired, one product at a time",

@@ -1,5 +1,6 @@
 export const products = [
   {
+    id: 1,
     name: "Abhash Smart Cane",
     eyebrow: "Flagship Mobility",
     description:
@@ -18,15 +19,16 @@ export const products = [
       "15+ hours battery life",
       "Ergonomic folding design",
     ],
-    link: "/products/abhash-smart-cane"
+    link: "/products/abhash-smart-cane",
   },
   {
+    id: 2,
     name: "Abhash Smart Glasses",
     eyebrow: "Intelligent Guidance",
     description:
       "A wearable device with AI-powered scene description and GPS navigation, providing real-time audio guidance for complete independence.",
     accent: "#2A9D8F",
-    image:  "/images/product-images/smart-glass/glass1.png",
+    image: "/images/product-images/smart-glass/glass1.png",
     tags: [
       "GPS Navigation",
       "AI Scene Description",
@@ -39,6 +41,6 @@ export const products = [
       "One-touch emergency alerts",
       "All-day battery performance",
     ],
-    link: "/products/abhash-smart-glasses"
+    link: "/products/abhash-smart-glasses",
   },
 ];

@@ -1,29 +1,25 @@
 import Link from "next/link";
-import { Eye, Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Youtube } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Youtube,
+} from "lucide-react";
+import Image from "next/image";
 
 const footerLinks = {
-  product: [
-    { href: "#features", label: "Features" },
-    { href: "#how-it-works", label: "How It Works" },
-    { href: "#pricing", label: "Pricing" },
-    { href: "#faq", label: "FAQ" },
-  ],
   company: [
-    { href: "#about", label: "About Us" },
-    { href: "#team", label: "Our Team" },
-    { href: "#careers", label: "Careers" },
-    { href: "#press", label: "Press" },
+    { href: "#impact", label: "Impact" },
+    { href: "#stats", label: "Statistics" },
+    { href: "#product", label: "Product" },
+    { href: "#join", label: "Join Us" },
   ],
-  resources: [
-    { href: "#blog", label: "Blog" },
-    { href: "#guides", label: "User Guides" },
-    { href: "#accessibility", label: "Accessibility" },
-    { href: "#support", label: "Support" },
-  ],
-  legal: [
-    { href: "#privacy", label: "Privacy Policy" },
-    { href: "#terms", label: "Terms of Service" },
-    { href: "#cookies", label: "Cookie Policy" },
+  product: [
+    { href: "/products/abhash-smart-cane", label: "Smart Cane" },
+    { href: "/products/abhash-smart-glasses", label: "Smart Glasses" },
   ],
 };
 
@@ -36,139 +32,114 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-white text-cream" role="contentinfo">
-      {/* Main Footer Content */}
-      <div className="mx-auto container px-6 py-16 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-6 lg:gap-8">
-          {/* Brand Column */}
-          <div className="lg:col-span-2">
+    <footer
+      className="relative overflow-hidden bg-white text-cream"
+      role="contentinfo"
+    >
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-0 top-0 h-56 w-56 rounded-full bg-[#E8A838]/10 blur-3xl sm:h-72 sm:w-72" />
+        <div className="absolute bottom-0 right-0 h-56 w-56 rounded-full bg-[#2A9D8F]/10 blur-3xl sm:h-72 sm:w-72" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(232,168,56,0.08),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(42,157,143,0.08),transparent_30%)]" />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-20">
+        <div className="grid gap-10 sm:gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-10">
+          <div className="md:col-span-2">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-navy rounded-lg"
+              className="inline-flex max-w-full items-center rounded-lg transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8A838] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-label="Drishti - Home"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-amber">
-                <Eye className="h-6 w-6 text-navy" aria-hidden="true" />
-              </div>
-              <span className="font-serif text-3xl font-bold tracking-tight">
-                Drishti
-              </span>
+              <Image
+                src="/logo.png"
+                alt="Drishti Logo"
+                width={160}
+                height={160}
+                className="h-auto w-28 object-contain sm:w-32 md:w-36 lg:w-40"
+                priority
+              />
             </Link>
-            <p className="mt-6 text-lg leading-relaxed text-cream/80">
-              Empowering the visually impaired with innovative smart cane technology. 
-              Navigate the world with confidence and independence.
+
+            <p className="mt-5 max-w-xl text-sm leading-7 text-[#0B1A2E]/75 sm:mt-6 sm:text-base lg:text-lg">
+              Empowering visually impaired individuals with innovative smart
+              cane technology for safer mobility, greater confidence, and
+              everyday independence.
             </p>
-            
-            {/* Contact Info */}
-            <div className="mt-8 space-y-4">
+
+            <div className="mt-6 space-y-4 sm:mt-8">
               <a
-                href="mailto:hello@drishti.tech"
-                className="flex items-center gap-3 text-cream/80 transition-colors hover:text-amber focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-navy rounded-lg"
+                href="mailto:ridwanhpatwary@gmail.com"
+                className="flex items-start gap-3 break-all rounded-lg text-sm text-[#0B1A2E]/75 transition-colors hover:text-[#E8A838] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8A838] focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:text-base"
               >
-                <Mail className="h-5 w-5" aria-hidden="true" />
-                <span className="text-lg">hello@drishti.tech</span>
+                <Mail className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
+                <span>ridwanhpatwary@gmail.com</span>
               </a>
+
               <a
-                href="tel:+911234567890"
-                className="flex items-center gap-3 text-cream/80 transition-colors hover:text-amber focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-navy rounded-lg"
+                href="tel:+8801795820358"
+                className="flex items-start gap-3 rounded-lg text-sm text-[#0B1A2E]/75 transition-colors hover:text-[#E8A838] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8A838] focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:text-base"
               >
-                <Phone className="h-5 w-5" aria-hidden="true" />
-                <span className="text-lg">+91 123 456 7890</span>
+                <Phone className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
+                <span>+8801795-820358</span>
               </a>
-              <div className="flex items-start gap-3 text-cream/80">
-                <MapPin className="h-5 w-5 mt-1 flex-shrink-0" aria-hidden="true" />
-                <span className="text-lg">
-                  Innovation Hub, Sector 62<br />
-                  Noida, Uttar Pradesh 201301
+
+              <div className="flex items-start gap-3 text-sm text-[#0B1A2E]/75 sm:text-base">
+                <MapPin
+                  className="mt-0.5 h-5 w-5 shrink-0"
+                  aria-hidden="true"
+                />
+                <span className="max-w-xs sm:max-w-sm">
+                  Tejgaon love road, Dhaka, Bangladesh
                 </span>
               </div>
             </div>
           </div>
+      
+          <div>
+            <h3 className="text-base font-semibold text-[#0B1A2E] sm:text-lg">
+              Product
+            </h3>
+            <ul className="mt-4 space-y-2.5 sm:mt-5 sm:space-y-3">
+              {footerLinks.product.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-sm text-[#0B1A2E]/70 transition-colors hover:text-[#E8A838] sm:text-base"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          {/* Links Columns */}
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-4">
-            {/* Product */}
-            <div>
-              <h3 className="font-serif text-xl font-semibold text-amber">Product</h3>
-              <ul className="mt-6 space-y-4" role="list">
-                {footerLinks.product.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-lg text-cream/80 transition-colors hover:text-amber focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-navy rounded-lg"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Company */}
-            <div>
-              <h3 className="font-serif text-xl font-semibold text-amber">Company</h3>
-              <ul className="mt-6 space-y-4" role="list">
-                {footerLinks.company.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-lg text-cream/80 transition-colors hover:text-amber focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-navy rounded-lg"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Resources */}
-            <div>
-              <h3 className="font-serif text-xl font-semibold text-amber">Resources</h3>
-              <ul className="mt-6 space-y-4" role="list">
-                {footerLinks.resources.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-lg text-cream/80 transition-colors hover:text-amber focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-navy rounded-lg"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Legal */}
-            <div>
-              <h3 className="font-serif text-xl font-semibold text-amber">Legal</h3>
-              <ul className="mt-6 space-y-4" role="list">
-                {footerLinks.legal.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-lg text-cream/80 transition-colors hover:text-amber focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-navy rounded-lg"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div>
+            <h3 className="text-base font-semibold text-[#0B1A2E] sm:text-lg">
+              Company
+            </h3>
+            <ul className="mt-4 space-y-2.5 sm:mt-5 sm:space-y-3">
+              {footerLinks.company.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-sm text-[#0B1A2E]/70 transition-colors hover:text-[#2A9D8F] sm:text-base"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-cream/10">
-        <div className="mx-auto container px-6 py-8">
-          <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-            {/* Copyright */}
-            <p className="text-lg text-cream/60">
-              © {new Date().getFullYear()} Drishti Technologies. All rights reserved.
+        <div className="mt-10 border-t border-[#0B1A2E]/10 pt-5 sm:mt-12 sm:pt-6 lg:mt-14">
+          <div className="flex flex-col gap-4 sm:gap-5 md:flex-row md:items-center md:justify-between">
+            <p className="text-center text-xs text-[#0B1A2E]/55 sm:text-sm md:text-left">
+              © {new Date().getFullYear()} Drishti Technologies. All rights
+              reserved.
             </p>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-4">
+            {/* <div className="flex items-center justify-center gap-3 md:justify-end">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
@@ -177,13 +148,26 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-cream/10 text-cream transition-all hover:bg-amber hover:text-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-[#0B1A2E]/10 bg-[#0B1A2E]/5 text-[#0B1A2E]/70 transition-all hover:-translate-y-0.5 hover:border-[#E8A838]/40 hover:bg-[#E8A838] hover:text-[#0B1A2E] sm:h-10 sm:w-10"
                     aria-label={`Follow us on ${social.label}`}
                   >
-                    <Icon className="h-5 w-5" aria-hidden="true" />
+                    <Icon className="h-4 w-4" aria-hidden="true" />
                   </a>
                 );
               })}
+            </div> */}
+            <div>
+              <span className="text-xs text-[#0B1A2E]/55 sm:text-sm">
+                Developed by{" "}
+              </span>
+              <a
+                href="https://ongshak.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-medium text-[#E8A838] transition hover:text-[#0B1A2E] sm:text-sm"
+              >
+                Ongshak
+              </a>
             </div>
           </div>
         </div>

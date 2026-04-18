@@ -47,7 +47,7 @@ export function ProductsSection() {
 
             return (
               <div
-                key={product.name}
+                key={product.id}
                 className={`group overflow-hidden rounded-[1.75rem] border border-slate-100 bg-white shadow-lg shadow-[#0F2137]/5 sm:rounded-[2rem] lg:flex lg:flex-row ${
                   isReverse ? "lg:flex-row-reverse" : ""
                 }`}
@@ -138,7 +138,7 @@ export function ProductsSection() {
                       href={product.link}
                       className="group/btn inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0F2137] px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:w-auto sm:px-8"
                     >
-                      <span>Explore Details</span>
+                      <span>{product.id === 1 ? "Pre-Order Now" : "Coming Soon"}</span>
                       <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                     </Link>
                   </div>

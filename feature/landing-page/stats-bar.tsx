@@ -1,19 +1,22 @@
 const stats = [
   {
+    id: 1,
     value: "717+",
     label: "Active Users",
   },
   {
+    id: 2,
     value: "65",
     label: "District Ambassadors",
   },
+  // {
+  //   value: "1st",
+  //   label: "Patent Filed",
+  // },
   {
-    value: "1st",
-    label: "Patent Filed",
-  },
-  {
+    id: 3,
     value: "Robi",
-    label: "Strategic Partner",
+    label: "Strategic Investor",
   },
 ];
 
@@ -41,13 +44,13 @@ export function StatsBar() {
 
           <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-[#E8A838]/70 to-transparent" />
 
-          <div className="relative grid grid-cols-2 md:grid-cols-4">
+          <div className="relative grid grid-cols-2 md:grid-cols-3">
             {stats.map((stat, index) => (
               <div
-                key={index}
+                key={stat.id}
                 className={[
                   "group relative px-4 py-6 text-center sm:px-6 sm:py-7 md:px-8 md:py-9",
-                  "transition-all duration-300 hover:bg-white/40",
+                  `transition-all duration-300 hover:bg-white/40 ${stat.id === 3 && 'col-span-2 md:col-span-1'}`,
                   index !== stats.length - 1
                     ? "md:border-r md:border-[#0F2137]/8"
                     : "",

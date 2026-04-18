@@ -34,9 +34,9 @@ export function Navbar() {
               <Image
                 src="/logo.png"
                 alt="Drishti Logo"
-                width={120}
-                height={32}
-                className="object-contain"
+                width={160}
+                height={160}
+                className="object-contain "
                 priority
               />
             </Link>
