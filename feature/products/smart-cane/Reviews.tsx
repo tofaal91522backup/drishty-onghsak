@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { productData, reviewsData } from "./product-data";
+import Image from "next/image";
 
 const Reviews = () => {
   const { specifications, boxItems } = productData;
@@ -94,15 +95,13 @@ const Reviews = () => {
                     className="rounded-3xl border border-slate-200 bg-white p-5"
                   >
                     <div className="flex flex-col md:flex-row items-start gap-4">
-                      <Avatar className="h-11 w-11">
-                        {review.avatar ? (
-                          <AvatarImage src={review.avatar} alt={review.name} />
-                        ) : (
-                          <AvatarFallback>
-                            {review.name.charAt(0)}
-                          </AvatarFallback>
-                        )}
-                      </Avatar>
+                      <Image
+                        src={review.profile_link}
+                        alt={review.name}
+                        width={44}
+                        height={44}
+                        className="rounded-full"
+                      />
 
                       <div className="flex-1">
                         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">

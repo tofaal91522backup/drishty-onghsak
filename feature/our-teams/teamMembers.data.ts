@@ -30,7 +30,8 @@ export const teamMembers: TeamCardProps[] = [
     right: false,
   },
   {
-    motto: "We are working to build a better world for the visually impaired, one product at a time",
+    motto:
+      "We are working to build a better world for the visually impaired, one product at a time",
     name: "Md Al Amin Ashik",
     designation: "Electronics Engineer",
     description:
@@ -73,6 +74,18 @@ export const teamMembers: TeamCardProps[] = [
     right: true,
   },
   {
+    motto:
+      "For Iftisham, engineering is more than designing systems—it’s about creating opportunities, empowering people, and connecting lives through technology.",
+    name: "Iftisham Hossain Sajjil",
+    designation: "Embedded Systems Engineer",
+    description: `Iftisham Hossain Sajjil is an Embedded Systems Engineer at Drishti, driven by a vision to make technology more human-centered and meaningful. He believes that machines are not just tools—they are bridges that connect people, ideas, and opportunities.
+With a deep passion for robotics and intelligent hardware, Iftisham actively works in hardware R&D, where he focuses on building efficient, innovative, and practical solutions. His approach combines precision with creativity, ensuring that every project delivers real impact.
+Currently pursuing his Bachelor’s degree in Electrical and Computer Engineering (EEE major) at North South University, he continuously blends academic knowledge with hands-on experience. Beyond his professional work, Iftisham is deeply involved in the robotics community—mentoring young innovators through the World Robot Olympiad (WRO) and serving as the Deputy Director of the Robotics Wing at the North South University Computer & Engineering Club (NSUCEC).`,
+    image: "./images/our-teams/sajjil.png",
+    linkedin: "https://www.linkedin.com/in/iftisahm-hossain-sajjil-1977b8291/",
+    right: false,
+  },
+  {
     motto: "We've started Drishti to eradicate Blindness from the World",
     name: "Dr. Nova Ahmed",
     designation: "Technology Advisor",
@@ -80,7 +93,7 @@ export const teamMembers: TeamCardProps[] = [
       "Dr. Nova Ahmed, our esteemed Technology Advisor at Drishti, is a distinguished professor in the ECE Department at North South University. A dedicated researcher, Dr. Ahmed specializes in human-centered computing, with a strong affinity for qualitative research methodologies. Driven by a profound passion for social justice, she actively engages in causes that impact women. Dr. Nova Ahmed's guidance plays a pivotal role in shaping our product development, ensuring they align with both technological advancements and the ethos of making a positive difference in society.",
     image: "./images/our-teams/nova.png",
     linkedin: "https://www.linkedin.com/in/nova-ahmed-58b8949/",
-    right: false,
+    right: true,
   },
   {
     motto: "We've started Drishti to eradicate Blindness from the World",
@@ -90,7 +103,7 @@ export const teamMembers: TeamCardProps[] = [
       "Jeremy Jackson Davis, our esteemed Collaboration and Outreach Advisor at Drishti, is a seasoned professional with over 25 years of diverse experience in project management, international development, sustainability, entrepreneurship, and investment. Having spent two decades dedicated to international development, working closely with rural communities across Asia, Latin America, and Africa, Jeremy transitioned into entrepreneurship. He founded SmartMek, an agricultural services company, focusing on sustainable and profitable management for smallholder farmers and agri-entrepreneurs. Jeremy's wealth of experience includes a pivotal role as Director of Programs for iDE Bangladesh, overseeing strategic initiatives in agriculture, WASH, and Women's Economic Empowerment projects.",
     image: "./images/our-teams/jeremy.png",
     linkedin: "https://www.linkedin.com/in/jeremyjdavis1/",
-    right: true,
+    right: false,
   },
   {
     motto: "We've started Drishti to eradicate Blindness from the World",
@@ -100,6 +113,6 @@ export const teamMembers: TeamCardProps[] = [
       "Mohamed Abdus Salam holds a crucial role as the Assistive Device Consultant at Drishti, while concurrently serving as the Head of the Cornea Department at the renowned Ispahani Islamia Eye Institute. With extensive experience and expertise, Mohamed is instrumental in providing guidance and consultation on assistive device initiatives at Drishti. His leadership within the Cornea Department underscores his unwavering commitment to the field of eye care, and his significant contributions to the advancement of assistive technology. Mohamed's dual roles reflect his dedication to improving the lives of individuals with visual impairments and his dedication to enhancing eye health and vision care.",
     image: "./images/our-teams/salam.png",
     linkedin: "",
-    right: false,
+    right: true,
   },
 ];

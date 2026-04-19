@@ -70,11 +70,40 @@ export const productData = {
     "/images/product-images/smart-cane/image4.png",
   ],
 };
-
+const stories = [
+  {
+    id: 1,
+    name: "Mohammad Robiul Islam",
+    role: "Student, Department of Sociology, University of Dhaka",
+    location: "Dhaka",
+    quote:
+      "I am a visually impaired student currently studying Sociology at the University of Dhaka. Aavash has transformed my mobility. I can now move around different places on campus independently. With its sound feedback and different signal cues, I can easily understand and follow my path.",
+    profile_link: "/images/user-stories/md-robiul-islam.jpg",
+  },
+  {
+    id: 2,
+    name: "Md. Rafat Karim",
+    role: "Student, Government and Politics, Jahangirnagar University",
+    location: "Jahangirnagar University / Kallyanpur",
+    quote:
+      "As a visually impaired student, the combination of technology with the traditional white cane feels truly remarkable to me. I had heard about smart white canes in other countries, but I never imagined I would have one here in Bangladesh. Now I travel comfortably across my campus and other places using Aavash. I even commute independently by public transport from Kallyanpur to campus. Its signals help me attract attention when needed, and the sensor detection feature allows me to identify obstacles on the left, right, and front. Because of this, I can move with much more confidence and safety.",
+    profile_link: "/images/user-stories/md-rifat-karim.jpg",
+  },
+  {
+    id: 3,
+    name: "Md. Saiful Islam",
+    role: "Bank Professional, Private Bank",
+    location: "Motijheel, Dhaka",
+    quote:
+      "After completing both my undergraduate and postgraduate studies at the University of Dhaka, I am now working at a private bank. As a visually impaired professional, technology plays a vital role in both my daily life and workplace commute. Aavash provides me with strong technical and mental support while traveling from my home to my office in Motijheel. I regularly use the metro rail, and the smart cane’s signals help me attract attention in crowded spaces for safer movement. Its ultrasonic sensor range lets me detect obstacles much earlier than a traditional white cane, giving me real-time feedback and greater independence.",
+    profile_link: "/images/user-stories/md-siful-islam.jpg",
+  },
+];
 export const reviewsData = [
   {
     id: 1,
     name: "মোহাম্মদ রবিউল ইসলাম",
+    profile_link: "/images/user-stories/md-robiul-islam.jpg",
     avatar: "",
     rating: 5,
     date: "2 weeks ago",
@@ -84,6 +113,7 @@ export const reviewsData = [
   {
     id: 2,
     name: "মোঃ রাফাত করিম",
+    profile_link: "/images/user-stories/md-rifat-karim.jpg",
     avatar: "",
     rating: 5,
     date: "1 week ago",
@@ -96,6 +126,7 @@ export const reviewsData = [
     avatar: "",
     rating: 4.5,
     date: "3 days ago",
+    profile_link: "/images/user-stories/md-siful-islam.jpg",
     reviewText:
       "আমি মোঃ সাইফুল ইসলাম। ঢাকা বিশ্ববিদ্যালয় থেকে স্নাতক ও স্নাতকোত্তর ডিগ্রি সম্পন্ন করে বর্তমানে একটি বেসরকারি ব্যাংকে কর্মরত আছি। একজন দৃষ্টিপ্রতিবন্ধী ব্যক্তি হিসেবে কর্মক্ষেত্রে যাতায়াত এবং প্রাত্যহিক জীবনে প্রযুক্তির মেলবন্ধন আমার জন্য অত্যন্ত গুরুত্বপূর্ণ। আমার বাসা থেকে মতিঝিলে অবস্থিত অফিসে যাতায়াতের ক্ষেত্রে 'আভাস' বর্তমানে আমাকে সম্পূর্ণ কারিগরি ও মানসিক সহায়তা প্রদান করছে। আমি প্রতিনিয়ত যাতায়াতের জন্য মেট্রোরেল ব্যবহার করি, যেখানে এই স্মার্ট কেন-টির সিগন্যাল ব্যবহার করে আমি খুব সহজেই অন্যান্য পথচারীদের দৃষ্টি আকর্ষণ করতে পারি, যা ভিড়ের মধ্যে নিরাপদ চলাচলে সহায়ক হয়। এমনকি আমার অফিসের সহকর্মীরাও এই ডিভাইসটির উন্নত কর্মক্ষমতা এবং নির্ভরযোগ্যতা দেখে বেশ প্রশংসা করেছেন। প্রচলিত সাদা ছড়ি ব্যবহারের সময় কোনো বস্তুর সংস্পর্শে না আসা পর্যন্ত বাধার অবস্থান বোঝা কঠিন ছিল, কিন্তু 'আভাস'-এর আল্ট্রাসনিক সেন্সর রেঞ্জের কারণে এখন আমি বেশ দূর থেকেই বাধার উপস্থিতি সম্পর্কে নির্ভুল ইঙ্গিত পাচ্ছি। দূরবর্তী অবজেক্ট ডিটেকশন এবং রিয়েল-টাইম ফিডব্যাকের এই প্রযুক্তিটি আমার স্বাধীন চলাফেরার ক্ষেত্রে একটি যুগান্তকারী উদ্ভাবন বলে আমি মনে করি।",
   },
