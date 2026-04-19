@@ -56,7 +56,7 @@ export function Footer() {
                 width={160}
                 height={160}
                 className="h-auto w-28 object-contain sm:w-32 md:w-36 lg:w-40"
-                priority
+                loading="lazy"
               />
             </Link>
 

@@ -23,7 +23,7 @@ const ProductImage = ({ images, name }: ProductImageProps) => {
                 alt={name}
                 fill
                 className="object-contain p-6"
-                priority
+                loading="lazy"
               />
             ) : (
               <div className="flex h-full items-center justify-center text-sm text-slate-500">
@@ -54,6 +54,7 @@ const ProductImage = ({ images, name }: ProductImageProps) => {
                 alt={`${name} thumbnail ${index + 1}`}
                 fill
                 className="object-contain p-2"
+                loading="lazy"
               />
             </button>
           );

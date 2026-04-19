@@ -43,6 +43,7 @@ const AboutPage = () => {
                       alt={section.title}
                       fill
                       className="object-cover"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0F2137]/35 via-[#0F2137]/10 to-transparent" />
                   </div>

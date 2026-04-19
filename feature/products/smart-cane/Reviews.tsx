@@ -101,6 +101,7 @@ const Reviews = () => {
                         width={44}
                         height={44}
                         className="rounded-full"
+                        loading="lazy"
                       />
 
                       <div className="flex-1">
